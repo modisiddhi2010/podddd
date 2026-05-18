@@ -1,0 +1,791 @@
+```html
+<!-- Dashboard View -->
+<section id="dashboard" class="view active">
+    <div class="view-header">
+        <div>
+            <h1>Welcome back, Nadar Kaur</h1>
+            <p class="subtitle">Here's what's happening in your classes today.</p>
+        </div>
+
+        <button id="dashboard-create-assignment-btn"
+            class="primary-btn student-hide teacher-show"
+            style="display: none;">
+            <i data-lucide="plus"></i> Create Assignment
+        </button>
+    </div>
+
+    <div class="dashboard-grid">
+
+        <!-- TASKS -->
+        <div class="card summary-card">
+            <div class="card-header">
+                <h3>Upcoming Tasks</h3>
+                <button class="text-btn">View All</button>
+            </div>
+
+            <ul class="task-list" id="task-list">
+
+                <li class="task-item urgent">
+                    <div class="task-info">
+                        <input type="checkbox" class="task-checkbox">
+                        <div>
+                            <h4>Database Systems - Project 1</h4>
+                            <p>Due Today, 11:59 PM</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="task-item warning">
+                    <div class="task-info">
+                        <input type="checkbox" class="task-checkbox">
+                        <div>
+                            <h4>Artificial Intelligence - Mini Project</h4>
+                            <p>Due Tonight, 9:00 PM</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="task-item normal">
+                    <div class="task-info">
+                        <input type="checkbox" class="task-checkbox">
+                        <div>
+                            <h4>Algorithms - Problem Set 4</h4>
+                            <p>Due Friday, 5:00 PM</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="task-item warning">
+                    <div class="task-info">
+                        <input type="checkbox" class="task-checkbox">
+                        <div>
+                            <h4>Operating Systems - Deadlock Report</h4>
+                            <p>Due Tomorrow, 5:00 PM</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="task-item normal">
+                    <div class="task-info">
+                        <input type="checkbox" class="task-checkbox">
+                        <div>
+                            <h4>Computer Networks - Packet Tracer Lab</h4>
+                            <p>Due Saturday, 2:00 PM</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="task-item normal">
+                    <div class="task-info">
+                        <input type="checkbox" class="task-checkbox">
+                        <div>
+                            <h4>Web Technologies - Portfolio Website</h4>
+                            <p>Due Sunday, 11:59 PM</p>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- ATTENDANCE SUMMARY -->
+        <div class="card summary-card">
+            <div class="card-header">
+                <h3>Overall Attendance</h3>
+                <button class="text-btn">Details</button>
+            </div>
+
+            <div class="attendance-summary">
+                <div class="circular-progress" data-progress="89">
+                    <div class="inner-circle">
+                        <span class="progress-text">89%</span>
+                    </div>
+                </div>
+
+                <div class="attendance-stats">
+                    <div class="stat">
+                        <span class="stat-dot green"></span>
+                        <span>Present: 118</span>
+                    </div>
+
+                    <div class="stat">
+                        <span class="stat-dot red"></span>
+                        <span>Absent: 11</span>
+                    </div>
+
+                    <div class="stat">
+                        <span class="stat-dot yellow"></span>
+                        <span>Late: 4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ANNOUNCEMENTS -->
+        <div class="card announcements-card full-width">
+            <div class="card-header">
+                <h3>Recent Announcements</h3>
+            </div>
+
+            <div class="announcement-list">
+
+                <div class="announcement">
+                    <div class="announcer-avatar">
+                        <img src="https://i.pravatar.cc/150?img=32">
+                    </div>
+
+                    <div class="announcement-content">
+                        <div class="announcement-meta">
+                            <span class="author">Prof. Sarah Smith</span>
+                            <span class="course-tag">Algorithms CS301</span>
+                            <span class="time">2 hours ago</span>
+                        </div>
+
+                        <p>Midterm exam pattern has been updated. Check syllabus section.</p>
+                    </div>
+                </div>
+
+                <div class="announcement">
+                    <div class="announcer-avatar">
+                        <img src="https://i.pravatar.cc/150?img=11">
+                    </div>
+
+                    <div class="announcement-content">
+                        <div class="announcement-meta">
+                            <span class="author">Prof. Monica Bing</span>
+                            <span class="course-tag">Artificial Intelligence</span>
+                            <span class="time">Today</span>
+                        </div>
+
+                        <p>AI Hackathon registrations are now open for all students.</p>
+                    </div>
+                </div>
+
+                <div class="announcement">
+                    <div class="announcer-avatar">
+                        <img src="https://i.pravatar.cc/150?img=15">
+                    </div>
+
+                    <div class="announcement-content">
+                        <div class="announcement-meta">
+                            <span class="author">Dr. Ross Geller</span>
+                            <span class="course-tag">Computer Networks</span>
+                            <span class="time">Yesterday</span>
+                        </div>
+
+                        <p>Packet Tracer Lab evaluation scheduled for next Monday.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ATTENDANCE VIEW -->
+<section id="attendance" class="view">
+
+    <div class="view-header">
+        <div>
+            <h1>Attendance Records</h1>
+            <p class="subtitle">
+                Track your presence across all enrolled courses.
+            </p>
+        </div>
+
+        <div class="filters">
+            <select class="filter-select">
+                <option>Semester 5</option>
+                <option>Semester 6</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="attendance-grid">
+
+        <!-- Algorithms -->
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Algorithms</h3>
+                    <p>CS301 • Prof. Sarah Smith</p>
+                </div>
+
+                <div class="percentage good">92%</div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width:92%"></div>
+            </div>
+
+            <div class="attendance-details-mini">
+                <span>24 Present</span>
+                <span>2 Absent</span>
+                <span>0 Late</span>
+            </div>
+        </div>
+
+        <!-- DBMS -->
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Database Systems</h3>
+                    <p>CS302 • Prof. Mark Johnson</p>
+                </div>
+
+                <div class="percentage warning">75%</div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar warning" style="width:75%"></div>
+            </div>
+
+            <div class="attendance-details-mini">
+                <span>15 Present</span>
+                <span>5 Absent</span>
+                <span>0 Late</span>
+            </div>
+        </div>
+
+        <!-- OS -->
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Operating Systems</h3>
+                    <p>CS303 • Rachel Green</p>
+                </div>
+
+                <div class="percentage good">88%</div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width:88%"></div>
+            </div>
+
+            <div class="attendance-details-mini">
+                <span>22 Present</span>
+                <span>3 Absent</span>
+                <span>1 Late</span>
+            </div>
+        </div>
+
+        <!-- CN -->
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Computer Networks</h3>
+                    <p>CS304 • Ross Geller</p>
+                </div>
+
+                <div class="percentage warning">79%</div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar warning" style="width:79%"></div>
+            </div>
+
+            <div class="attendance-details-mini">
+                <span>18 Present</span>
+                <span>5 Absent</span>
+                <span>2 Late</span>
+            </div>
+        </div>
+
+        <!-- AI -->
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>CS306 • Monica Bing</p>
+                </div>
+
+                <div class="percentage excellent">95%</div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar excellent" style="width:95%"></div>
+            </div>
+
+            <div class="attendance-details-mini">
+                <span>26 Present</span>
+                <span>1 Absent</span>
+                <span>0 Late</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+```
+```html id="uq71bn"
+<!-- ASSIGNMENTS VIEW -->
+<section id="assignments" class="view">
+
+    <div class="view-header">
+        <div>
+            <h1>Assignments</h1>
+            <p class="subtitle">
+                Manage your coursework and submissions.
+            </p>
+        </div>
+
+        <div class="filters">
+
+            <input
+                type="text"
+                id="assignment-search"
+                class="search-input"
+                placeholder="Search assignments..."
+            >
+
+            <select class="filter-select" id="course-filter">
+                <option value="">All Courses</option>
+                <option value="Algorithms">Algorithms</option>
+                <option value="Database Systems">Database Systems</option>
+                <option value="Operating Systems">Operating Systems</option>
+                <option value="Computer Networks">Computer Networks</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="Web Technologies">Web Technologies</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+            </select>
+
+            <button class="filter-btn active">Active</button>
+            <button class="filter-btn">Past</button>
+
+        </div>
+    </div>
+
+    <div class="assignments-kanban">
+
+        <!-- TODO -->
+        <div class="kanban-column">
+
+            <div class="column-header">
+                <h3>To Do <span class="count">4</span></h3>
+            </div>
+
+            <div class="kanban-cards">
+
+                <div class="card assignment-card urgent"
+                    data-course="Artificial Intelligence">
+
+                    <div class="card-meta">
+                        <span class="course-tag">
+                            Artificial Intelligence
+                        </span>
+                    </div>
+
+                    <h4>AI Chatbot Interface</h4>
+
+                    <p class="description">
+                        Design conversational UI for student support bot.
+                    </p>
+
+                    <div class="card-footer">
+                        <span class="deadline">
+                            <i data-lucide="clock"></i>
+                            Tonight, 9 PM
+                        </span>
+
+                        <button class="secondary-btn small">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card assignment-card warning"
+                    data-course="Operating Systems">
+
+                    <div class="card-meta">
+                        <span class="course-tag">
+                            Operating Systems
+                        </span>
+                    </div>
+
+                    <h4>Deadlock Prevention Report</h4>
+
+                    <p class="description">
+                        Analyze deadlock handling techniques in Linux systems.
+                    </p>
+
+                    <div class="card-footer">
+                        <span class="deadline">
+                            <i data-lucide="clock"></i>
+                            Tomorrow
+                        </span>
+
+                        <button class="secondary-btn small">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card assignment-card normal"
+                    data-course="Computer Networks">
+
+                    <div class="card-meta">
+                        <span class="course-tag">
+                            Computer Networks
+                        </span>
+                    </div>
+
+                    <h4>Packet Tracer Simulation</h4>
+
+                    <p class="description">
+                        Configure network topology using Cisco Packet Tracer.
+                    </p>
+
+                    <div class="card-footer">
+                        <span class="deadline">
+                            <i data-lucide="clock"></i>
+                            Friday
+                        </span>
+
+                        <button class="secondary-btn small">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card assignment-card normal"
+                    data-course="Web Technologies">
+
+                    <div class="card-meta">
+                        <span class="course-tag">
+                            Web Technologies
+                        </span>
+                    </div>
+
+                    <h4>Portfolio Website</h4>
+
+                    <p class="description">
+                        Create responsive portfolio using HTML, CSS and JS.
+                    </p>
+
+                    <div class="card-footer">
+                        <span class="deadline">
+                            <i data-lucide="clock"></i>
+                            Sunday
+                        </span>
+
+                        <button class="secondary-btn small">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- IN PROGRESS -->
+        <div class="kanban-column">
+
+            <div class="column-header">
+                <h3>In Progress <span class="count">2</span></h3>
+            </div>
+
+            <div class="kanban-cards">
+
+                <div class="card assignment-card warning"
+                    data-course="UI/UX Design">
+
+                    <div class="card-meta">
+                        <span class="course-tag">
+                            UI/UX Design
+                        </span>
+                    </div>
+
+                    <h4>Transit App Redesign</h4>
+
+                    <p class="description">
+                        Conduct usability testing for metro transit app.
+                    </p>
+
+                    <div class="card-footer">
+                        <span class="deadline">
+                            <i data-lucide="clock"></i>
+                            Tomorrow
+                        </span>
+
+                        <button class="secondary-btn small">
+                            Resume
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card assignment-card normal"
+                    data-course="Software Engineering">
+
+                    <div class="card-meta">
+                        <span class="course-tag">
+                            Software Engineering
+                        </span>
+                    </div>
+
+                    <h4>SRS Documentation</h4>
+
+                    <p class="description">
+                        Prepare software requirement specification report.
+                    </p>
+
+                    <div class="card-footer">
+                        <span class="deadline">
+                            <i data-lucide="clock"></i>
+                            Monday
+                        </span>
+
+                        <button class="secondary-btn small">
+                            Resume
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- COMPLETED -->
+        <div class="kanban-column">
+
+            <div class="column-header">
+                <h3>Completed <span class="count">3</span></h3>
+            </div>
+
+            <div class="kanban-cards">
+
+                <div class="card assignment-card done"
+                    data-course="Algorithms">
+
+                    <div class="card-meta">
+                        <span class="course-tag">
+                            Algorithms
+                        </span>
+
+                        <div class="grade-badge">
+                            A-
+                        </div>
+                    </div>
+
+                    <h4>Problem Set 3</h4>
+
+                    <p class="description">
+                        Graph algorithms implementation.
+                    </p>
+
+                    <div class="card-footer">
+                        <span class="status-text">
+                            <i data-lucide="check-circle"></i>
+                            Graded
+                        </span>
+
+                        <button class="text-btn small">
+                            View Feedback
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card assignment-card done"
+                    data-course="Database Systems">
+
+                    <div class="card-meta">
+                        <span class="course-tag">
+                            Database Systems
+                        </span>
+
+                        <div class="grade-badge">
+                            A
+                        </div>
+                    </div>
+
+                    <h4>ER Diagram Design</h4>
+
+                    <p class="description">
+                        Designed normalized relational schema.
+                    </p>
+
+                    <div class="card-footer">
+                        <span class="status-text">
+                            <i data-lucide="check-circle"></i>
+                            Graded
+                        </span>
+
+                        <button class="text-btn small">
+                            View Feedback
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- GRADES VIEW -->
+<section id="grades" class="view">
+
+    <div class="view-header">
+        <div>
+            <h1>Grades</h1>
+            <p class="subtitle">
+                Academic performance overview.
+            </p>
+        </div>
+    </div>
+
+    <div class="attendance-grid">
+
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Current SGPA</h3>
+                    <p>Semester 5</p>
+                </div>
+
+                <div class="percentage excellent">
+                    8.7
+                </div>
+            </div>
+        </div>
+
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Algorithms</h3>
+                    <p>CS301</p>
+                </div>
+
+                <div class="percentage excellent">
+                    A+
+                </div>
+            </div>
+        </div>
+
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Database Systems</h3>
+                    <p>CS302</p>
+                </div>
+
+                <div class="percentage excellent">
+                    A
+                </div>
+            </div>
+        </div>
+
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Operating Systems</h3>
+                    <p>CS303</p>
+                </div>
+
+                <div class="percentage good">
+                    A
+                </div>
+            </div>
+        </div>
+
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Computer Networks</h3>
+                    <p>CS304</p>
+                </div>
+
+                <div class="percentage warning">
+                    B+
+                </div>
+            </div>
+        </div>
+
+        <div class="card course-attendance-card">
+            <div class="card-top">
+                <div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>CS306</p>
+                </div>
+
+                <div class="percentage excellent">
+                    A
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CALENDAR VIEW -->
+<section id="calendar" class="view">
+
+    <div class="view-header">
+        <div>
+            <h1>Calendar</h1>
+            <p class="subtitle">
+                Track classes, events and deadlines.
+            </p>
+        </div>
+    </div>
+
+    <div class="card" style="padding:0; overflow:hidden;">
+
+        <div class="calendar-grid">
+
+            <div class="cal-header">Sun</div>
+            <div class="cal-header">Mon</div>
+            <div class="cal-header">Tue</div>
+            <div class="cal-header">Wed</div>
+            <div class="cal-header">Thu</div>
+            <div class="cal-header">Fri</div>
+            <div class="cal-header">Sat</div>
+
+            <div class="cal-day disabled">27</div>
+            <div class="cal-day disabled">28</div>
+            <div class="cal-day disabled">29</div>
+            <div class="cal-day disabled">30</div>
+
+            <div class="cal-day">1</div>
+
+            <div class="cal-day">2
+                <div class="cal-event green">
+                    AI Hackathon
+                </div>
+            </div>
+
+            <div class="cal-day">3</div>
+
+            <div class="cal-day">4
+                <div class="cal-event blue">
+                    CN Lecture
+                </div>
+            </div>
+
+            <div class="cal-day">5</div>
+
+            <div class="cal-day">6
+                <div class="cal-event orange">
+                    Mid Sem Viva
+                </div>
+            </div>
+
+            <div class="cal-day">7</div>
+
+            <div class="cal-day today">8
+                <div class="cal-event red">
+                    DBMS Submission
+                </div>
+            </div>
+
+            <div class="cal-day">9</div>
+
+            <div class="cal-day">10
+                <div class="cal-event blue">
+                    Placement Workshop
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+```
